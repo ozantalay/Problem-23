@@ -1,4 +1,16 @@
+import { useRef } from "react"
+
 export default function Form() {
+  const inputRef = useRef(null);
+
+  const handleFocus=()=>{
+    if(inputRef.current){
+      inputRef.current.focus();
+    }
+
+  }
+
+
   return (
     <div className='p-8 mx-auto'>
       <div className='px-4 max-w-sm py-5 shadow sm:rounded-lg sm:p-6'>
@@ -11,6 +23,7 @@ export default function Form() {
               Email
             </label>
             <input
+            ref={inputRef}
               type='email'
               name='email'
               id='email'
@@ -21,6 +34,7 @@ export default function Form() {
           <button
             type='button'
             className='mt-3 inline-flex w-full items-center justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:ml-3 sm:mt-0 sm:w-auto'
+            onClick={handleFocus}
           >
             Focus
           </button>
